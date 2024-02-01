@@ -1,5 +1,5 @@
 from datetime import datetime
-from modal import Secret, gpu
+from modal import Secret, gpu, Mount
 from transformers import TrainerCallback
 import sys
 import os
@@ -24,19 +24,28 @@ class CheckpointCallback(TrainerCallback):
 
 
 #Load data to modal volume
-@stub.function(volumes=VOLUME_CONFIG)
+@stub.function(volumes=VOLUME_CONFIG,
+            mounts=[Mount.from_local_dir("../../../data", remote_path="/root"),])
 def load_dataset():
     # import os
-    # import pandas as pd
+    import pandas as pd
 
-    # train_dataset = pd.read_csv('../../../data/training_data.csv')
-    # val_dataset = pd.read_csv('../../../data/validating_data.csv')
+    def format_instruction(sample):
+        PROMPT_TEMPLATE = "[INST] <<SYS>>\nUse the Input to provide a response from a question about medical domain.\n<</SYS>>\n\nInput:\n{user} [/INST]\n\nResponse: {assistant}"
+        return {"text": PROMPT_TEMPLATE.format(user=sample["user"], assistant=sample["assistant"])}  
 
-    # #load data to modal volume
-    # train_dataset.to_json(f"/training_data/train_data.jsonl")
-    # val_dataset.to_json(f"/training_data/val_data.jsonl")    
+    train_dataset = pd.read_csv('training_data.csv')
+    val_dataset = pd.read_csv('validating_data.csv')
+
+
+    train_dataset = train_dataset.apply(format_instruction, axis=1)
+    val_dataset = val_dataset.apply(format_instruction, axis=1)
+
+    train_dataset.to_json("train_data.jsonl", orient='records', lines=True)
+    val_dataset.to_json("val_data.jsonl",orient='records', lines=True)
 
     stub.training_data_volume.commit()
+
 
 # define finetune function
 @stub.function(gpu=GPU_CONFIG,
