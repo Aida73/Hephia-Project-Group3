@@ -1,0 +1,2 @@
+https://github.com/modal-labs/modal-examples/blob/main/06_gpu_and_ml/vllm_mixtral.py
+https://sightengine.com/docs/personal-information-detection-model

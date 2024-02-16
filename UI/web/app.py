@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 from unidecode import unidecode
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 app = Flask(__name__)
-API_URL = "https://unsupervise--heph3-mistral7b-finetune-inference.modal.run"
+API_URL = os.getenv("URL_MODEL")
 
 @app.route('/')
 def index():
