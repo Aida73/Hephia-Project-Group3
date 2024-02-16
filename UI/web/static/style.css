@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #efe6e9;
+    background-image: url('assets/bot.gif'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    height: 80%;
+    overflow: auto;
+  }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+    
+    .chat-container {
+      width: 100%;
+      max-width: 40.25em;
+      background-color: #f7f7f7;
+      border-radius: 0.625em;
+      background-color: rgba(247, 247, 247, 0.9);
+      box-shadow: 0 0.25em 0.5em rgba(247, 247, 247, 0.7);
+      padding: 1.25em;
+      margin-top: 0.5px;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25em;
+      padding: 0.7em;
+    }
+    
+  
+    .logo {
+      width: 2.5em;
+      height: 2.5em;
+      margin-right: 0.625em;
+    }
+    
+    .title {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .messages {
+      max-height: 25em;
+      overflow-y: auto;
+      padding-bottom: 0.625em;
+    }
+    
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.25em;
+    }
+    
+    .content {
+      background-color: #eef3fd;
+      padding: 0.625em;
+      border-radius: 0.625em;
+      box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    }
+    
+    .content p {
+      margin: 0;
+      line-height: 1.4;
+    }
+    
+    .user-input {
+      display: flex;
+      margin-top: 1.25em;
+    }
+    
+    .user-input input {
+      flex: 1;
+      border: 0.063em solid #ccc;
+      border-radius: 0.313em;
+      padding: 0.625em;
+      margin-right: 0.625em;
+    }
+    
+    .user-input button {
+      background-color: #d9ba71;
+      color: #fff;
+      border: none;
+      padding: 0.625em 1.25em;
+      border-radius: 0.313em;
+      cursor: pointer;
+    }
+    
+    .school-logo {
+      width: 6em;
+      height: 6em;
+      margin-right: 0.625em;
+    }
+  
+    .school-name {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000000;
+      margin: 0;
+    }
+  
+    .school-slogan {
+      font-family: "Roboto", sans-serif;
+      font-weight: lighter;
+      font-style: italic;
+      font-size: 0.8em;
+      color: #000000;
+      margin: 0;
+    }
+  
+    .messages {
+      max-height: 5em; 
+      overflow-y: auto;
+    }
+  
+    .message.bot-message .content {
+      background-color: #B8BFC7; 
+      color: #052349; 
+    }
+
+    .loading-indicator {
+        display: block;
+        margin-top: 5px;
+        font-style: italic;
+        color: #888;
+    }
+  
+    

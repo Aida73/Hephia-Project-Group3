@@ -16,11 +16,15 @@ import json
 #         PROMPT_TEMPLATE = "[INST] <<SYS>>\nUse the Input to provide a response from a question about medical domain.\n<</SYS>>\n\nInput:\n{user} [/INST]\n\nResponse: {assistant}"
 #         return {"text": PROMPT_TEMPLATE.format(user=sample["user"], assistant=sample["assistant"])}  
 
-data = pd.read_csv('../data/data.csv')
+training_data = pd.read_csv('../data/training_data.csv')
 #data = data.apply(format_instruction, axis=1)
-data.to_json('./modal/src/data.jsonl', orient='records', lines=True)
+training_data.to_json('../data/training_data.jsonl', orient='records', lines=True)
 # train_dataset = pd.read_csv('../data/training_data.csv')
 # val_dataset = pd.read_csv('../data/validating_data.csv')
+
+eval_data = pd.read_csv('../data/validating_data.csv')
+#data = data.apply(format_instruction, axis=1)
+eval_data.to_json('../data/eval_data.jsonl', orient='records', lines=True)
 
 
 # train_dataset = train_dataset.apply(format_instruction, axis=1)

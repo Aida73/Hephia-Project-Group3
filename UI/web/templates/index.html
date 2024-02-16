@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot HephAI</title>
+    <link href={{ url_for('static', filename='style.css') }} rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <!-- <img src="assets/logo.png" alt="Logo de l'école" class="school-logo"> -->
+    <img src="static/assets/logo.png" alt="Logo" class="logo">
+    <div class="school-info">
+        <h2 class="school-name">HephAI-MediBot</h2>
+        <p class="school-slogan">Heph3 - M2DS</p>
+    </div>
+
+</header>
+
+<div class="container">
+    <div class="chat-container">
+        <div class="header">
+            <img src="static/assets/logo.png" alt="Logo" class="logo">
+            <h1 class="title">Welcome to MediBot</h1>
+        </div>
+        <div class="messages" id="chat-container">
+            <!-- Les messages du chat s'afficheront ici -->
+        </div>
+        <div class="user-input">
+            <input type="text" id="userMessage" placeholder="Feel free to ask any medical question..." onkeypress="handleEnterKey(event)"/>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
