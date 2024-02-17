@@ -26,7 +26,7 @@ def send_message():
             print(bot_response)
             return jsonify({'response': bot_response})
         else:
-            return jsonify({'response': "Erreur lors de l'appel à l'API du modèle."}), 500
+            return jsonify({'response': "An error occurs"}), 500
     
     except requests.exceptions.RequestException as e:
         return jsonify({'response': f"Erreur de requête : {e}"}), 500
