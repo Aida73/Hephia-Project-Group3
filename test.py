@@ -6,6 +6,7 @@ load_dotenv()
 import json
 
 URL_MODEL = os.getenv("URL_MODEL")
+URL_MASKING = os.getenv("URL_MASKING")
 
 
 original_text = """Hello Jean Dupont, your telephone number is 06 12 34 56 78 and your email address 
@@ -14,7 +15,7 @@ at 1 Avenue Pierrefitte-Sur Seinee. I'm 12. My NSS is 2 99 03 99 432 123 32. My 
 data = {"text":original_text}
 
 t1= time.time()
-response = requests.post("https://unsupervise--heph3-pi-mask-anonymize-dev.modal.run", json=data, timeout=100.0)
+response = requests.post(URL_MASKING, json=data, timeout=100.0)
 t2=time.time()
 if response.status_code == 200:
     #t=json.loads(response.text)
