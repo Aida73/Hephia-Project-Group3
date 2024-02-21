@@ -75,7 +75,6 @@ confection==0.1.3
 constantly==15.1.0
 contourpy @ file:///Users/ec2-user/ci_py311/contourpy_1678322361099/work
 cookiecutter @ file:///opt/conda/conda-bld/cookiecutter_1649151442564/work
-cryptography @ file:///Users/ec2-user/ci_py311_2/cryptography_1679335457662/work
 cssselect==1.1.0
 cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
 cymem==2.0.8
@@ -97,6 +96,7 @@ en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_
 entrypoints @ file:///Users/ec2-user/ci_py311/entrypoints_1678316169365/work
 et-xmlfile==1.1.0
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
+Faker==23.2.1
 fastapi==0.109.2
 fastjsonschema @ file:///Users/ec2-user/ci_py311_2/python-fastjsonschema_1679338737111/work
 filelock @ file:///Users/ec2-user/ci_py311/filelock_1678318171955/work

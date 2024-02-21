@@ -4,13 +4,16 @@ import re
 import random
 import string
 from pydantic import BaseModel
+from faker import Faker
 
-image = Image.debian_slim().pip_install("spacy").run_commands(
+image = Image.debian_slim().pip_install("spacy","Faker").run_commands(
         "python -m spacy download 'en_core_web_sm'"
     )
 stub = Stub("heph3-pi-mask",image=image)
 
 
+nlp = spacy.load("en_core_web_sm")
+fake = Faker()
 nlp = spacy.load("en_core_web_sm")
 
 def generate_random_string(length):
@@ -20,17 +23,22 @@ def generate_random_string(length):
 
 
 def anonymize_phone_numbers(text):
-    return re.sub(r'\b\d{2} \d{2} \d{2} \d{2} \d{2}\b', 'XX-XXX-XX-XX', text)
+    return re.sub(r'\b\d{2} \d{2} \d{2} \d{2} \d{2}\b', fake.phone_number(), text)
 
 def anonymize_emails(text):
-    return re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 'anonyme@anonyme.com', text)
+    return re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', fake.email(), text)
 
 def anonymize_nss(text):
-    text = re.sub(r'\b\d{1} \d{2} \d{2} \d{2} \d{3} \d{3} \d{2}\b', 'a certain value', text)
-    return re.sub(r'\b\d{15}\b', 'a certain value', text)
+    text = re.sub(r'\b\d{1} \d{2} \d{2} \d{2} \d{3} \d{3} \d{2}\b', fake.ssn(), text)
+    return re.sub(r'\b\d{15}\b', fake.ssn(), text)
+
+def anonymize_addresses(text):
+    address_pattern = r'\b(\d+)?\s*(Avenue|Ave|Av.|Av|Bd|Boulevard|Rue|Route)\s+[A-Za-z0-9\s\-\'éèàê]+'
+    return re.sub(address_pattern, lambda x: fake.address(), text)
+
 
 def anonymize_passport_visa(text):
-    return re.sub(r'\b[A-Z]{1}[0-9]{8}\b', "a certain value", text)
+    return re.sub(r'\b[A-Z]{1}[0-9]{8}\b', fake.passport_number(), text)
 
 def anonymize_entities(text):
     doc = nlp(text)
@@ -40,6 +48,8 @@ def anonymize_entities(text):
         "NORP": "Group",
         "GPE": "Location",
         "FAC": "Facility",
+        "LOC": "Address"
+
     }
     anonymized_text = text
     for ent in reversed(doc.ents):
@@ -47,7 +57,6 @@ def anonymize_entities(text):
             random_string = generate_random_string(len(ent.text))
             anonymized_text = anonymized_text[:ent.start_char] + random_string + anonymized_text[ent.end_char:]
     return anonymized_text
-
 
 class Data(BaseModel):
     text: str
