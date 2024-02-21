@@ -3,10 +3,22 @@ import requests
 from unidecode import unidecode
 from dotenv import load_dotenv
 import os
+import json
 load_dotenv()
 
 app = Flask(__name__)
-API_URL = os.getenv("URL_MODEL")
+API_URL_MISTRAL = os.getenv("URL_MODEL_MISTRAL")
+API_URL_PHI2 = os.getenv("URL_MODEL_PHI2")
+
+def process_response(response, API_URL):
+    if API_URL == API_URL_MISTRAL:
+        bot_response = unidecode(response.json())
+        bot_response = response.json()
+    elif API_URL == API_URL_PHI2:
+        bot_response = json.loads(response.text)
+        bot_response = bot_response['response']
+    return bot_response
+
 
 @app.route('/')
 def index():
@@ -18,11 +30,10 @@ def send_message():
     user_message = request.json.get('question')
     print(user_message)
     try:
-        response = requests.post(API_URL, json={"question": user_message})
+        response = requests.post(API_URL_PHI2, json={"question": user_message})
         
         if response.status_code == 200:
-            bot_response = unidecode(response.json())
-            bot_response = response.json()
+            bot_response = process_response(response, API_URL_PHI2)
             print(bot_response)
             return jsonify({'response': bot_response})
         else:

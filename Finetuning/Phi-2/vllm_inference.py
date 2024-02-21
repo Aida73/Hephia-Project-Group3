@@ -4,6 +4,9 @@ from modal import Image, Secret, Stub, method, web_endpoint
 
 from transformers import AutoTokenizer
 
+from pydantic import BaseModel
+import json
+
 MODEL_DIR = "/model"
 BASE_MODEL = "aissatoubalde/lab"
 
@@ -76,10 +79,15 @@ class Model:
         print(generated_text)
         return generated_text
 
+
+class Question(BaseModel):
+    question: str
+
+
 @stub.function()
-@web_endpoint()
-def main(user_question):
+@web_endpoint(method="POST")
+def main(user_question:Question):
     model = Model()
     #questions = "What is diabetis?"
-    output = model.generate.remote(user_question)
+    output = model.generate.remote(user_question.question)
     return {"response":output}
