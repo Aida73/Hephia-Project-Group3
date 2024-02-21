@@ -93,6 +93,7 @@ distributed @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/ab
 dm-tree==0.1.8
 docstring-to-markdown @ file:///Users/ec2-user/ci_py311/docstring-to-markdown_1678326320721/work
 docutils @ file:///Users/ec2-user/ci_py311/docutils_1678316143314/work
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl#sha256=86cc141f63942d4b2c5fcee06630fd6f904788d2f0ab005cce45aadb8fb73889
 entrypoints @ file:///Users/ec2-user/ci_py311/entrypoints_1678316169365/work
 et-xmlfile==1.1.0
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
