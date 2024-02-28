@@ -1,3 +1,7 @@
 env/
 /.env
 /sources.txt
+/test.py
+/Datamasking/script1.py
+/Datamasking/script2.py
+/Datamasking/datamasking.py
