@@ -2,8 +2,5 @@ env/
 /.env
 /sources.txt
 /test.py
-DataMasking/script1.py/
-DataMasking/script2.py/
-DataMasking/datamasking.py/
-DataMasking/dm.ipynb/
+DataMasking/datamasking.py
 
