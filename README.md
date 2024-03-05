@@ -3,7 +3,7 @@
 ### Description
 
 
-L'objectif de ce projet consiste à développer un **chatbot capable de répondre efficacement à des questions médicales** auxquelles les modèles de langage classiques ont du mal à répondre en suivant un certain nombre d'étapes. Dans un premier temps, on va faire un benchmark d'un certain nombre de LLMs existants tels que  **Llama-2-7b**, **Mistral-7b**, **Falcon-7b**, **Meditron-7b**, **Gpt-3.5** et **Microsoft-Phi2**. On va évaluer ces LLMs sur un ensemble de questions médicales. Ensuite, on va fine-tuner les trois meilleurs modèles issus du benchmarking avec un dataset médical. Enfin, on va déployer le modèle sur la plateforme modal et le servir sous forme d’API afin d'alimenter l'interface du chatbot à développer. On termine un Data MAsking qui permet la détection et le masquage des informations personnelles telles que les noms des personnes, leurs identifiants bancaires , et d’autres informations personnelles, avant de les envoyer au LLM; ceci pour s'assurer de la protection de la vie privée dans les textes envoyés.
+L'objectif de ce projet consiste à développer un **chatbot capable de répondre efficacement à des questions médicales** auxquelles les modèles de langage classiques ont du mal à répondre en suivant un certain nombre d'étapes. Dans un premier temps, on va faire un benchmark d'un certain nombre de LLMs existants tels que  **Llama-2-7b**, **Mistral-7b**, **Falcon-7b**, **Meditron-7b**, **Gpt-3.5** et **Microsoft-Phi2**. On va évaluer ces LLMs sur un ensemble de questions médicales. Ensuite, on va fine-tuner les trois meilleurs modèles issus du benchmarking avec un dataset médical. Enfin, on va déployer le modèle sur la plateforme modal et le servir sous forme d’API afin d'alimenter l'interface du chatbot à développer. On termine avec un Data Masking qui permet la détection et le masquage des informations personnelles telles que les noms des personnes, leurs identifiants bancaires , et d’autres informations personnelles, avant de les envoyer au LLM; ceci pour s'assurer de la protection de la vie privée dans les textes envoyés.
 
 ![Page_Web](/screenshots/demo.gif?raw=true)
 
@@ -59,15 +59,14 @@ Dans le dossier `Reports`, nous avons un rapport bien détaillé de toutes les �
 - Installer toutes les dépendances nécessaires avec `pip install -r requirements.txt`
 - Créer un fichier `.env` qui contient tous les tokens, clés ou endpoints
 - Pour réexecuter les entrainements ou les inférences, il faut créer un compte modal et y accéder via la CLI avec `modal setup`. Une fois ceci fait, si on veut faire l'inference de Mistral par exemple, on faudra juste lancer au niveau du terminal `modal Finetuning/Mistral/src/inference.py`.
+- Pour lancer l'application du chatbot, il faut exécuter la commande suivante `python UI/web/app.py`.
 
 
 ### Interface et déploiement
 - Des endpoints ont été déployé sur `Modal` pour les modèles finetunés de Phi2 et Mistral. 
 - Pour les tester on peut modifier le fichier `test.py`, soit en faisant un `requests.post(URL_MODEL_PHI2, json=model_data)` ou `requests.post(URL_MODEL_MISTRAL, json=model_data)` et dans la CLI: `python test.py`.
 - Pour le Data masking également, un endpoint est déployé sur Modal, pour le tester on peut juste modifier le fichier `test.py` avec `requests.post(URL_MASKING, json=masking_data)` et l'exécuter via la CLI avec `python test.py`.
-
-- Pour tester l'interface du chatbot, il faut exécuter la commande suivante `python UI/web/app.py`. C'est une application web qui est développé avec du flask et du js. 
-- Les modèles utilisés pour alimenter l'interface sont paramétrables, il suffit juste de modifier le fichier `UI/web/app.py` en faisant un `requests.post(API_URL_PHI2, json={"question": json.loads(ano)['anonymized_text']})` et `process_response(response, API_URL_PHI2)` si on veut tester le modèle PHI2 ou `requests.post(API_URL_MISTRAL, json={"question": json.loads(ano)['anonymized_text']})` et `process_response(response, API_URL_PHI2)` si on veut travailler avec Mistral.
+- Par défaut, c'est Mistral qui est utilisé pour alimenter l'interface. Toutefois, le modèle à utiliser reste paramétrable. En effet, il suffit juste de modifier le fichier `UI/web/app.py` en faisant un `requests.post(API_URL_PHI2, json={"question": json.loads(ano)['anonymized_text']})` et `process_response(response, API_URL_PHI2)` si on veut tester le modèle PHI2 ou `requests.post(API_URL_MISTRAL, json={"question": json.loads(ano)['anonymized_text']})` et `process_response(response, API_URL_PHI2)` si on veut travailler avec Mistral.
 
 ### Technologies & environnement de travail
 
