@@ -39,19 +39,11 @@ def send_message():
             response = requests.post(API_URL_PHI2, json={"question": json.loads(ano)['anonymized_text']})
             if response.status_code == 200:
                 bot_response = process_response(response, API_URL_PHI2)
-                print(bot_response)
                 return jsonify({'response': bot_response})
             else:
                 return jsonify({'response': "An error occurs"}), 500
         else:
             return jsonify({'response': "An error occurs"}), 500
-        # response = requests.post(API_URL_PHI2, json={"question": "What is diabetes"})
-        # if response.status_code == 200:
-        #     bot_response = process_response(response, API_URL_PHI2)
-        #     print(bot_response)
-        #     return jsonify({'response': bot_response})
-        # else:
-        #     return jsonify({'response': "An error occurs"}), 500
 
     except requests.exceptions.RequestException as e:
         return jsonify({'response': f"An error occurs: {e}"}), 500

@@ -58,8 +58,8 @@ class Inference:
             new_tokens = len(request_output.outputs[0].token_ids)
             tokens = new_tokens
 
-        #throughput = tokens / (time.time() - t0)
-        #print(f"Request completed: {throughput:.4f} tokens/s")
+        throughput = tokens / (time.time() - t0)
+        print(f"Request completed: {throughput:.4f} tokens/s")
         print(request_output.outputs[0].text)
 
 class Question(BaseModel):
