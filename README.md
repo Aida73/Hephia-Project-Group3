@@ -74,4 +74,9 @@ Pour la réalisation de ce projet, nous avons utilisé les plateformes `Modal (G
 
 ### Screenshots
 ![Page_Web](/screenshots/mistral.png?raw=true)
+
+**Reponse du modèle Microsoft-PHI2 finetuné**
+
 ![Page_Web](/screenshots/phi2.png?raw=true)
+
+**Reponse du modèle Microsoft-MISTRAL finetuné**
