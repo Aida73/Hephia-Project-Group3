@@ -13,7 +13,7 @@ L'objectif de ce projet consiste à développer un **chatbot capable de répondr
 ├── DataMasking
 │   └── __pycache__
 ├── Finetuning
-│   ├── Gpt3
+│   ├── GPT3-5
 │   ├── Mistral
 │   │   ├── __pycache__
 │   │   └── src
@@ -21,6 +21,7 @@ L'objectif de ce projet consiste à développer un **chatbot capable de répondr
 │   │       └── mistral-finetuned-model
 │   └── Phi-2
 │       └── __pycache__
+├── Reports
 ├── TestLLM
 │   ├── Falcon7b
 │   ├── Falcon7bMicrosoftPhi2
@@ -32,7 +33,8 @@ L'objectif de ce projet consiste à développer un **chatbot capable de répondr
 │       ├── static
 │       │   └── assets
 │       └── templates
-└── data
+├── data
+└── screenshots
 ```
 
 Dans le dossier `TestLLM`, nous avons un sous-dossier pour chaque LLM Testé. Il faut juste exécuter les notebooks dans ces dossiers. Le dossier `TestLLM/data` contient le mini dataset de 10 questions utilisés pour tester les LLM. Il y'a également dans `data` le dataset final contenant, pour tous les LLMs testés, les questions , les réponses fournies, les temps de réponses, ainsi que les réponses attendues. Il nous servira de base de comparaison pour choisir les meilleurs modèles.
