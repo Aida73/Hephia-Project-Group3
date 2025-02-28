@@ -36,9 +36,9 @@ def send_message():
         if masking_response.status_code==200:
             ano = masking_response.text
             print(json.loads(ano)['anonymized_text'])
-            response = requests.post(API_URL_PHI2, json={"question": json.loads(ano)['anonymized_text']})
+            response = requests.post(API_URL_MISTRAL, json={"question": json.loads(ano)['anonymized_text']})
             if response.status_code == 200:
-                bot_response = process_response(response, API_URL_PHI2)
+                bot_response = process_response(response, API_URL_MISTRAL)
                 return jsonify({'response': bot_response})
             else:
                 return jsonify({'response': "An error occurs"}), 500
