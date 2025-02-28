@@ -94,28 +94,28 @@ You must have Python, Pip, Virtualenv & Modal installed on your computer to run 
     git clone https://github.com/Aida73/Hephia-Project-Group3.git
    ```
 2. Create and activate a virtualenv at the root of the project
-```sh
+    ```sh
     python3 -m venv tutorial_env
     source venv/bin/activate
-```
+    ```
 3. Install all necessary dependencies 
-```sh
+    ```sh
     pip install -r requirements.txt
-```
+    ```
 4. Create a `.env` file that will contain all tokens, keys & endpoints
 
 5. To execute the training or access to web page, you must create an modal account et access via CLI:
-```sh
+    ```sh
     modal setud
-```
+    ```
 5. Once this done, if you want to do inference with Mistral, you can run on the CLI:
-```sh
-modal Finetuning/Mistral/src/inference.py
-```
+    ```sh
+    modal Finetuning/Mistral/src/inference.py
+    ```
 6. To lauch the Chatbot web app, execute the following command:
-```sh
-python UI/web/app.py
-```
+    ```sh
+    python UI/web/app.py
+    ```
 
 
 ### Interface & deployment
@@ -127,14 +127,11 @@ python UI/web/app.py
 ### Build with
 
 For this project, we used:
-* [![Modal (GPU H100 2x80Go)][Modal (GPU H100 2x80Go)]][modal-url]
-* [![Google Colab (GPU T4)][React.js]][colab-url]
-* [![Flask][Flask]][flask-url]
-* [![Javascript][Javascript]][js-url]
-[modal-url]:https://modal.com/docs/guide/gpu
-[colab-url]:https://colab.research.google.com/
-[flask-url]:https://flask.palletsprojects.com/en/stable/
-[js-url]:https://developer.mozilla.org/fr/docs/Web/JavaScript
+* [Modal (GPU H100 2x80Go)](https://modal.com/docs/guide/gpu)
+* [Google Colab (GPU T4)](https://colab.research.google.com/)
+* [Flask](https://flask.palletsprojects.com/en/stable/)
+* [Javascript][Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+
 
 <!-- `Modal (GPU H100 2x80Go)` and `Google Colab (GPU T4)` platforms, the `python` programming language for model training, the `flask` python framework and `javascript` to develop the chatbot interface.
  -->
