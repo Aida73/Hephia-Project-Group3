@@ -130,7 +130,7 @@ For this project, we used:
 * [Modal (GPU H100 2x80Go)](https://modal.com/docs/guide/gpu)
 * [Google Colab (GPU T4)](https://colab.research.google.com/)
 * [Flask](https://flask.palletsprojects.com/en/stable/)
-* [Javascript][Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+* [Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 
 
 <!-- `Modal (GPU H100 2x80Go)` and `Google Colab (GPU T4)` platforms, the `python` programming language for model training, the `flask` python framework and `javascript` to develop the chatbot interface.
